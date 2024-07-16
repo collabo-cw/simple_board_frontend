@@ -1,3 +1,4 @@
+import axios from 'axios'
 import styled from "@emotion/styled";
 import { useState } from "react";
 
@@ -150,10 +151,13 @@ export default function Quiz01_05() {
       setPasswordError("8~16자의 영문,숫자,특수 문자만 사용 가능합니다.");
     }
   };
-  const onClickLogin = () => {
+  const onClickLogin = async () => {
     if (emailError === "" && passwordError === "") {
       alert("환영합니다");
     } 
+    const result = await axios.get("https://koreanjson.com/posts/1")     //함수 중복선언 문제
+        console.log(result) // 제대로된 결과 => { title: "..."}
+        console.log(result.data.title) // 제대로된 결과 => { title: "..."}
   };
 
   return (
