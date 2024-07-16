@@ -68,12 +68,12 @@ const PasswordInput = styled.input`
 `;
 const EmailError = styled.div`
   padding-top: 10px;
-  font-size: 18px;
+  font-size: 12px;
   color: #ff1b6d;
 `;
 const PasswordError = styled.div`
   padding-top: 10px;
-  font-size: 18px;
+  font-size: 12px;
   color: #ff1b6d;
 `;
 const LoginButton = styled.div`
@@ -85,6 +85,7 @@ const LoginButton = styled.div`
   border-radius: 38px;
   background-color: rgba(255, 27, 109, 0.6);
   cursor: pointer;
+  margin-top:15px;
   margin-bottom:15px;
 `;
 const LoginButtonTitle = styled.div`
