@@ -5,16 +5,14 @@ import { useState } from "react";
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  padding: 100px;
-  box-sin
 `;
 const Wrapper = styled.div`
-  width: 375px;
+  width: 100%;
   padding: 0 15px 0 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-box-sizing: border-box;
+  box-sizing: border-box;
   background-image: url("../img/pizza.jpg");
   background-color: rgba(0, 0, 0, 0.55);
   background-blend-mode: multiply;
@@ -128,7 +126,7 @@ const SocialLoginButtonTitle = styled.div`
   font-weight: bold;
 `;
 
-export default function Quiz01_05() {
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
