@@ -22,7 +22,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://183.109.108.47:5555/swagger/user/user-sign-up', formData);
+      const response = await axios.post('http://183.109.108.47:5555/user/user-sign-up', formData);
       console.log('회원가입 성공:');
     } catch (error) {
       console.error('회원가입 실패:');
