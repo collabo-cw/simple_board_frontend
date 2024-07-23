@@ -19,13 +19,17 @@ const SignUp = () => {
     });
   };
 
+  const router = useRouter();
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const router = useRouter()
+    
     try {
       const response = await axios.post('http://183.109.108.47:5555/user/user-sign-up', formData);
+      router.push('/main');
+      console.log(response);
       console.log('회원가입 성공:');
-      router.push('/main')
     } catch (error) {
       console.error('회원가입 실패:');
     }
