@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { useRouter } from 'next/router'
 const SignUp = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -21,9 +21,11 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const router = useRouter()
     try {
       const response = await axios.post('http://183.109.108.47:5555/user/user-sign-up', formData);
       console.log('회원가입 성공:');
+      router.push('/main')
     } catch (error) {
       console.error('회원가입 실패:');
     }
