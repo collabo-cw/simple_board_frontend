@@ -19,7 +19,7 @@ export default function MembershipPage(){
                     <PasswordDiv>
                         <IdInput type="password" placeholder='비밀번호 확인' />
                         <button>비밀번호 확인</button>
-                        <button>비밀번호 확인</button>
+                        <button> 확인</button>
                     </PasswordDiv>
                     <NameDiv>
 
