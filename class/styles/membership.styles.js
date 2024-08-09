@@ -33,7 +33,7 @@ export const WrapLogin = styled.div`
 export const Iddiv = styled.div`
   display:flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
 export const IdInput = styled.input`
@@ -57,3 +57,6 @@ export const NameDiv = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 `;
+export const Error = styled.div`
+  color: red; 
+`

@@ -1,75 +1,139 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error} from '../../styles/membership.styles';
 import axios from 'axios';
-import { useRouter } from 'next/router'
-const SignUp = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    phone: '',
-    name: '',
-    birthday: '',
-    gender: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const router = useRouter();
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+export default function MembershipPage(){
+
+    const [email , setEmail] = useState("");
+    const [password , setPassword] = useState("");
+    const [phone , setPhone] = useState("");
+    const [name , setName] = useState("");
+    const [birthday , setBirthday] = useState("");
+    const [gender , setGender] = useState("");
+
+    const [emailError , setEmailError] = useState("");
+    const [passwordError , setPasswordError] = useState("");
+    const [phoneError , setPhoneError] = useState("");
+    const [nameError , setNameError] = useState("");
+    const [birthdayError , setBirthdayError] = useState("");
+    const [genderError , setGenderError] = useState("");
     
-    try {
-      const response = await axios.post('http://183.109.108.47:5555/user/user-sign-up', formData);
-      router.push('/main');
-      console.log(response);
-      console.log('회원가입 성공:');
-    } catch (error) {
-      console.error('회원가입 실패:');
+    //onChange
+    const onChangeEmail = (e) =>{
+        setEmail(e.target.value)
+        if(e.target.value !== ""){
+            setEmailError("")
+        }
     }
-  };
+    const onChangePassword =(e) =>{
+        setPassword(e.target.value)
+        if(e.target.value !== ""){
+            setPasswordError("")
+        }
+    }
+    const onChangePhone = (e) => {
+        setPhone(e.target.value)
+        if(e.target.value !== ""){
+            setPhoneError("")
+        }
+    }
+    const onChangeName = (e) =>{
+        setName(e.target.value)
+        if(e.target.value !== ""){
+            setNameError("")
+        }
+    }
+    const onChangeBirthday = (e) => {
+        setBirthday(e.target.value)
+            if(e.target.value !== ""){
+            setBirthdayError("")
+        }
+    }
+    const onChangeGender = (e) => {
+        setGender(e.target.value )
+        if(e.target.value !== ""){
+            setGenderError("")
+        } 
+    }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        이메일:
-        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-      </label>
-      <br />
-      <label>
-        비밀번호:
-        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-      </label>
-      <br />
-      <label>
-        전화번호:
-        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
-      </label>
-      <br />
-      <label>
-        이름:
-        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-      </label>
-      <br />
-      <label>
-        생일:
-        <input type="date" name="birthday" value={formData.birthday} onChange={handleChange} required />
-      </label>
-      <br />
-      <label>
-        성별:
-        <input type="text" name="gender" value={formData.gender} onChange={handleChange} required />
-      </label>
-      <br />
-      <button type="submit">회원가입</button>
-    </form>
-  );
-};
+    const onClickSubmit = async (e) => {
+        e.preventDefault();
+        if(!email){
+            setEmailError("이메일을 입력해 주세요")
+        }
+        if(!password){
+            setPasswordError("패스워드를 입력해주세요")
+        }
+        if(!phone){
+            setPhoneError("번호를 입력해주세요")
+        }
+        if(!birthday){
+            setBirthdayError("찍어라 입력해주세요")
+        }
+        if(!name){
+            setNameError("이름을 입력해주세요")
+        }
+        if(!gender){
+            setGenderError("성별을 입력해주세요")
+        }
+        if(email && password && phone && name &&  birthday && gender){
+            try{
+                const response = await axios.post('https://306a-121-140-170-17.ngrok-free.app/user/user-sign-up',{
+                    email,
+                    password,
+                    phone,
+                    name,
+                    birthday,
+                    gender
+                });   
+            }catch(error){
+                alert(error.massage)
+            }
 
-export default SignUp;
+
+        }
+    }
+
+    
+    return(
+        <Container>
+            <Wrapper>
+                <WrapLogin>
+                    <Iddiv>
+                        <IdInput placeholder='email' onChange={onChangeEmail} />
+                        
+                    </Iddiv>
+                    <Error>{emailError}</Error>
+
+                    <Iddiv>
+                        <IdInput type="password" placeholder='password' onChange={onChangePassword} />
+                    </Iddiv>
+                    <Error>{passwordError}</Error>
+
+                    <Iddiv>
+                        <IdInput type="tel" placeholder='phone' onChange={onChangePhone} />
+                    </Iddiv>
+                    <Error>{phoneError}</Error>
+                    
+                    <Iddiv>
+                        <IdInput type="text" placeholder='name' onChange={onChangeName} />
+                    </Iddiv>
+                    <Error>{nameError}</Error>
+
+                    <Iddiv>
+                        <IdInput type="date" placeholder='birthday' onChange={onChangeBirthday} />
+                    </Iddiv>
+                    <Error>{birthdayError}</Error>
+
+                    <Iddiv>
+                        <IdInput type="text" placeholder='gender' onChange={onChangeGender} />
+                    </Iddiv>
+                    <Error>{genderError}</Error>
+
+                </WrapLogin>
+                <button onClick={onClickSubmit}>회원가입</button>
+            </Wrapper>
+        </Container>
+    )
+}
