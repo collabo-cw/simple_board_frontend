@@ -87,8 +87,10 @@ export default function MembershipPage(){
                     birthday,
                     gender
                 });   
+                console.log("성공")
             }catch(error){
                 alert(error.massage)
+                console.log("실패")
             }
 
 
