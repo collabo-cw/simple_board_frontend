@@ -87,8 +87,10 @@ export default function MembershipPage(){
                     birthday,
                     gender
                 });   
+                console.log('회원가입 성공:');
             }catch(error){
                 alert(error.massage)
+                console.error('회원가입 실패:');
             }
 
 
