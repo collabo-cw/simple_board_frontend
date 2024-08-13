@@ -15,10 +15,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  background-image: url("../img/pizza.jpg");
+  background: url("../img/pizza.jpg") no-repeat;
   background-color: rgba(0, 0, 0, 0.55);
   background-blend-mode: multiply;
-  background-size:contain;
+  background-size:cover;
 `;
 
 export const WrapLogin = styled.div`
