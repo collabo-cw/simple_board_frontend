@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error} from '../../styles/membership.styles';
+import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error, Title, MembershipBtn} from '../../styles/membership.styles';
 import axios from 'axios';
 import { useRouter } from 'next/router'
 
@@ -102,6 +102,7 @@ export default function MembershipPage(){
         <Container>
             <Wrapper>
                 <WrapLogin>
+                    <Title>회원가입</Title>
                     <Iddiv>
                         <IdInput placeholder='email' onChange={onChangeEmail} />
 
@@ -134,7 +135,7 @@ export default function MembershipPage(){
                     <Error>{genderError}</Error>
 
                 </WrapLogin>
-                <button onClick={onClickSubmit}>회원가입</button>
+                <MembershipBtn onClick={onClickSubmit}>회원가입</MembershipBtn>
             </Wrapper>
         </Container>
     )

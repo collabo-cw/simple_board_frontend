@@ -8,16 +8,17 @@ export const Container = styled.div`
   color:#fff
 `;
 export const Wrapper = styled.div`
-  position:fixed;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   padding: 0 15px 0 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+`;
+
+export const Title = styled.h1`
+    font-size: 24px;
+    text-align: center;
 `;
 
 export const WrapLogin = styled.div`
@@ -62,4 +63,12 @@ export const NameDiv = styled.div`
 `;
 export const Error = styled.div`
   color: red; 
-`
+`;
+export const MembershipBtn = styled.button`
+    background: #333;
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    font-weight: 600;
+`;

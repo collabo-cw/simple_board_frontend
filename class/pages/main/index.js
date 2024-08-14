@@ -1,7 +1,7 @@
 import axios from 'axios'
 import styled from "@emotion/styled";
 import { useState } from "react";
-
+import { useRouter } from 'next/router'
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@ const LogoTitle = styled.div`
   padding-top: 10px;
 `;
 const InputWrapper = styled.div`
-  width: 340px;
+  width: 100%;
 `;
 const EmailInputWrapper = styled.div`
   border-bottom: 1px solid #fff;
@@ -45,7 +45,7 @@ const EmailInputWrapper = styled.div`
 `;
 const EmailInput = styled.input`
   width: 80%;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   border: none;
   background: none;
@@ -59,7 +59,7 @@ const PasswordInputWrapper = styled.div`
 const PasswordInput = styled.input`
   width: 80%;
   margin-top: 40px;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   border: none;
   background: none;
@@ -126,12 +126,14 @@ const SocialLoginButtonTitle = styled.div`
   font-weight: bold;
 `;
 
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const router =  useRouter();
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
     if (!email.includes("@")) {
@@ -157,6 +159,11 @@ export default function LoginPage() {
         console.log(result) // 제대로된 결과 => { title: "..."}
         console.log(result.data.title) // 제대로된 결과 => { title: "..."}
   };
+
+  const onClickMembership = () => {
+    router.push('./membership')
+    alert("회원가입 페이지로 이동합니다")
+  }
 
   return (
     <Container>
@@ -190,7 +197,7 @@ export default function LoginPage() {
           <EtcItem>|</EtcItem>
           <EtcItem>비밀번호 찾기</EtcItem>
           <EtcItem>|</EtcItem>
-          <EtcItem>회원가입</EtcItem>
+          <EtcItem onClick={onClickMembership}>회원가입</EtcItem>
         </EtcButton>
         <SocialLoginButton>
           <SocialLoginButtonImg src="../img/kakao.png"></SocialLoginButtonImg>
