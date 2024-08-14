@@ -8,17 +8,16 @@ export const Container = styled.div`
   color:#fff
 `;
 export const Wrapper = styled.div`
-  wIdth: 100%;
-  height:100vh;
+  position:fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   padding: 0 15px 0 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  background: url("../img/pizza.jpg") no-repeat;
-  background-color: rgba(0, 0, 0, 0.55);
-  background-blend-mode: multiply;
-  background-size:cover;
 `;
 
 export const WrapLogin = styled.div`
@@ -27,22 +26,26 @@ export const WrapLogin = styled.div`
   margin: 100px 15px 0 15px;
   padding: 15px 15px;
   border-radius: 4px;
-  border: 1px solid #fff;
+  border: 1px solid #333;
+  background: #333;
 `;
 
 export const Iddiv = styled.div`
-  display:flex;
-  justify-content: space-between;
   margin-top: 20px;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  
+  &:first-of-type {
+    margin-top: 0;
+  }
 `;
 
 export const IdInput = styled.input`
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #FFF;
   color: #fff;
   outline: red;
-
+  padding:10px;
   &::placeholder {
     color: #fff;
   }

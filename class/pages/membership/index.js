@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error} from '../../styles/membership.styles';
 import axios from 'axios';
-
+import { useRouter } from 'next/router'
 
 export default function MembershipPage(){
 
@@ -19,6 +19,7 @@ export default function MembershipPage(){
     const [birthdayError , setBirthdayError] = useState("");
     const [genderError , setGenderError] = useState("");
     
+    const router = useRouter();
     //onChange
     const onChangeEmail = (e) =>{
         setEmail(e.target.value)
@@ -87,8 +88,11 @@ export default function MembershipPage(){
                     birthday,
                     gender
                 });   
+                router.push('/main')
+                console.log('회원가입 성공:');
             }catch(error){
                 alert(error.massage)
+                console.log('회원가입 살패:');
             }
         }
     }
@@ -100,7 +104,7 @@ export default function MembershipPage(){
                 <WrapLogin>
                     <Iddiv>
                         <IdInput placeholder='email' onChange={onChangeEmail} />
-                        
+
                     </Iddiv>
                     <Error>{emailError}</Error>
 
