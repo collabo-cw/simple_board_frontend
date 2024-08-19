@@ -25,7 +25,7 @@ export const WrapLogin = styled.div`
   width: 100%;
   box-sizing: border-box;
   margin: 100px 15px 0 15px;
-  padding: 15px 15px;
+  padding: 15px 15px 30px;
   border-radius: 4px;
   border: 1px solid #333;
   background: #333;
@@ -35,7 +35,6 @@ export const Iddiv = styled.div`
   margin-top: 20px;
   border: 1px solid #FFF;
   border-radius: 4px;
-  
   &:first-of-type {
     margin-top: 0;
   }

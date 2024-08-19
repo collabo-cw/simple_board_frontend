@@ -5,10 +5,12 @@ import { useRouter } from 'next/router'
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  margin: 0 auto;
+  max-width: 768px;
 `;
 const Wrapper = styled.div`
   width: 100%;
-  padding: 0 15px 0 15px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
