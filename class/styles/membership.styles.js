@@ -29,6 +29,7 @@ export const WrapLogin = styled.div`
   border-radius: 4px;
   border: 1px solid #333;
   background: #333;
+  ox-shadow: 0px 0px 10px #333;
 `;
 
 export const Iddiv = styled.div`
