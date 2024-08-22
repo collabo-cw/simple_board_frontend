@@ -12,14 +12,8 @@ export default function RestGetPage(){
     //}
             
     const onClickSync = async() => {
-            const result = await axios.get("https://koreanjson.com/posts/1") 
+            const result = await axios.get("https://koreanjson.com/users") 
             console.log(result) // 제대로된 결과 => { title: "..."}
-            console.log(result.data) // 제대로된 결과 => { title: "..."}
-            console.log(result.statusText, 'statusText OK')
-            console.log(result.status, 'status')
-            console.log(result.headers, 'headers')
-            console.log(result.config, 'config')
-            console.log(result.request, 'request')
         }
 
     // - Pending(대기): 비동기 처리 로직이 아직 완료되지 않은 상태

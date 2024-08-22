@@ -80,7 +80,7 @@ export default function MembershipPage(){
         }
         if(email && password && phone && name &&  birthday && gender){
             try{
-                const response = await axios.post('https://306a-121-140-170-17.ngrok-free.app/user/user-sign-up',{
+                const response = await axios.post('https://816d-121-140-170-17.ngrok-free.app/user/user-sign-up',{
                     email,
                     password,
                     phone,
