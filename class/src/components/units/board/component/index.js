@@ -15,15 +15,18 @@ export default function BoardNewPage(props) {
 
     const onClickSubmit = async (e) => {
         try {
-            const result = await axios.post('http://backend-example.codebootcamp.co.kr/api-docs/board', {
+            const result = await axios.post('https://816d-121-140-170-17.ngrok-free.app/user/user-sign-up', {
                 writer,
                 password,
                 title,
                 contents
             });
             console.log(result.data); // data 속성을 확인합니다
+            console.log("성공"); // data 속성을 확인합니다
+
         } catch (error) {
             console.error(error);
+            console.log("실패")
         }
     };
 

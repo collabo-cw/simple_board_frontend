@@ -92,11 +92,24 @@ export default function MembershipPage(){
                 console.log('회원가입 성공:');
             }catch(error){
                 alert(error.massage)
-                console.log('회원가입 살패:');
+                console.log('회원가입 실패:');
             }
         }
     }
 
+    const onClickResult = async(e) => {
+        try{
+            const result = await axios.get('https://816d-121-140-170-17.ngrok-free.app/user/user-sign-up', {
+                code,
+                message,
+                result
+            });
+            console.log(result.data);
+        }catch{
+            console.log('가져오지못함');
+        }
+
+    }
     
     return(
         <Container>
@@ -136,6 +149,7 @@ export default function MembershipPage(){
 
                 </WrapLogin>
                 <MembershipBtn onClick={onClickSubmit}>회원가입</MembershipBtn>
+                <MembershipBtn onClick={onClickResult}>결과보기</MembershipBtn>
             </Wrapper>
         </Container>
     )
