@@ -36,6 +36,7 @@ export const H4 = styled.h4`
     font-size: 16px;
     color:#fff;
     font-weight:500;
+    margin:1em 0;
 `;
 
 export const Textarea = styled.textarea`
@@ -45,3 +46,12 @@ export const Textarea = styled.textarea`
     box-sizing: border-box;
     padding:10px;
 `
+export const Select = styled.select`
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+`;
+
+export const SelectContainer = styled.div`
+  display: flex;
+`;
