@@ -63,6 +63,7 @@ export const NameDiv = styled.div`
 `;
 export const Error = styled.div`
   color: red; 
+  font-size:14px;
 `;
 export const MembershipBtn = styled.button`
     background: #333;

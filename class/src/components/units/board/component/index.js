@@ -10,14 +10,13 @@ export default function BoardNewPage(props) {
     const [category, setCategory] = useState("");
     const [user_id, setUser_id] = useState("3fa85f64-5717-4562-b3fc-2c963f66afa6");
     const [file, setFile] = useState("");
-    
     const onChangeGuest = (e) => setGuest_id(e.target.value);
     const onChangePassword = (e) => setPassword(e.target.value);
     const onChangeTitle = (e) => setTitle(e.target.value);
     const onChangeContent = (e) => setContent(e.target.value);
-    const onChangeCategory = (e) => setCategory(e.target.value);
+    const onChangeCategory = (e) => {const upperCaseValue = e.target.value.toUpperCase(); setCategory(upperCaseValue);}
 
-    /* 카테고리 start */
+    /* //// 카테고리 //// start */
     const options = [
     { value: 'notice', label: 'NOTICE' },
     { value: 'general', label: 'GENERAL' },
@@ -34,19 +33,20 @@ export default function BoardNewPage(props) {
         ))}
         </Select>
     );
-    /* 카테고리 end */
+    /* const upperStr = options.toUpperCase(); */
+    /* //// 카테고리 //// end */
 
     /* 비회원 게시글 작성 테스트 start */
     const onClickGuestSubmit = async (e) => {
         try {
-            const result = await axios.post('https://816d-121-140-170-17.ngrok-free.app/board/create/board', {
-                user_id,
+            const result = await axios.post('https://e8e8-112-187-163-177.ngrok-free.app/board/create/board', {
+                /* user_id, */
                 category,
                 guest_id,
                 password,
                 title,
                 content,
-                file
+                /* file */
             });
             console.log("성공"); // data 속성을 확인합니다
         } catch (error) {
@@ -57,7 +57,7 @@ export default function BoardNewPage(props) {
             console.log(password,',password')
             console.log(title,',title')
             console.log(content,',content')
-            console.log(user_id,',user_id')
+            /* console.log(user_id,',user_id') */
         }
     };
     /* 비회원 게시글 작성 테스트 end */
@@ -66,10 +66,16 @@ export default function BoardNewPage(props) {
             <Wrapper>
                 <WrapLogin>
                     <Title>게시글 {props.isEdit ? "수정" : "작성"}</Title>
+                    {
+                    !props.isEdit&& ( // 수정페이지로 재 진입시 hide 
                     <SelectContainer>
-                        <CustomSelect options={options} value={category} onChange={onChangeCategory} />
+                        <CustomSelect 
+                            options={options} 
+                            value={category} 
+                            onChange={onChangeCategory} 
+                        />
                     </SelectContainer>
-                             
+                    )};        
                     <div>
                         <H4>제목</H4>
                         <input type="text" onChange={onChangeTitle} />

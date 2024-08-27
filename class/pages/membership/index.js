@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router'
 
 export default function MembershipPage(){
+    const [isValid, setIsValid] = useState(true); // 유효한 
 
     const [email , setEmail] = useState("");
     const [password , setPassword] = useState("");
@@ -18,44 +19,81 @@ export default function MembershipPage(){
     const [nameError , setNameError] = useState("");
     const [birthdayError , setBirthdayError] = useState("");
     const [genderError , setGenderError] = useState("");
-    
     const router = useRouter();
+
     //onChange
     const onChangeEmail = (e) =>{
-        setEmail(e.target.value)
-        if(e.target.value !== ""){
+        setEmail(e.target.value);
+        // backend 명세서에 표기된 표현식에 맞게 적용
+        const emailPattern = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+        setIsValid(emailPattern.test(e.target.value));
+
+        if(e.target.value !== "" && isValid){
             setEmailError("")
+        }else {
+            // 이메일이 유효하지 않을 때의 처리
+            setEmailError("ex)ddddddddd@naver.com")
+            console.log('emailError:', email);
         }
     }
+
     const onChangePassword =(e) =>{
-        setPassword(e.target.value)
-        if(e.target.value !== ""){
+        setPassword(e.target.value);
+
+        const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/~`|-]).+$/;
+        setIsValid(passwordPattern.test(e.target.value));
+
+        if(e.target.value !== "" && isValid){
             setPasswordError("")
+        }else{
+            // 비밀번호가 유효하지 않을 때의 처리
+            setPasswordError("ex) password1!")
+            console.log('passwordError:', password);
         }
     }
+
     const onChangePhone = (e) => {
         setPhone(e.target.value)
-        if(e.target.value !== ""){
+
+        const phonePattern = /^\d{11}$/;
+        setIsValid(phonePattern.test(e.target.value))
+
+        if(e.target.value !== "" && isValid){
             setPhoneError("")
+        }else{
+            // 휴대폰 번호가 유효하지 않을 때의 처리
+            setPhoneError("ex) 01012345678")
+            console.log('phoneError:', phone);
         }
     }
     const onChangeName = (e) =>{
         setName(e.target.value)
-        if(e.target.value !== ""){
+
+        const namePattern = /^[가-힣\s]+$/;
+        setIsValid(namePattern.test(e.target.value))
+        if(e.target.value !== "" && isValid){
             setNameError("")
+        }else{
+            // 휴대폰 번호가 유효하지 않을 때의 처리
+            setNameError("이름을 입력해주세요.")
+            console.log('name:', name);
         }
     }
+
     const onChangeBirthday = (e) => {
         setBirthday(e.target.value)
             if(e.target.value !== ""){
             setBirthdayError("")
+            console.log(e.target.value)
         }
     }
+
     const onChangeGender = (e) => {
         setGender(e.target.value )
         if(e.target.value !== ""){
             setGenderError("")
         } 
+
     }
 
     const onClickSubmit = async (e) => {
@@ -78,7 +116,7 @@ export default function MembershipPage(){
         if(!gender){
             setGenderError("성별을 입력해주세요")
         }
-        if(email && password && phone && name &&  birthday && gender){
+        if(isValid && birthday && gender){
             try{
                 const response = await axios.post('https://816d-121-140-170-17.ngrok-free.app/user/user-sign-up',{
                     email,
@@ -95,19 +133,15 @@ export default function MembershipPage(){
                 console.log('회원가입 실패:');
             }
         }
+        /* if (isValid) {
+            // 이메일이 유효할 때의 처리
+            console.log('good', email);
+            setEmailError("")
+        } */
     }
 
-    const onClickResult = async(e) => {
-        try{
-            const result = await axios.get('https://816d-121-140-170-17.ngrok-free.app/user/user-sign-up', {
-                code,
-                message,
-                result
-            });
-            console.log(result.data);
-        }catch{
-            console.log('가져오지못함');
-        }
+    const onClickResult = (e) => {
+        e.preventDefault();
 
     }
     
@@ -118,7 +152,6 @@ export default function MembershipPage(){
                     <Title>회원가입</Title>
                     <Iddiv>
                         <IdInput placeholder='email' onChange={onChangeEmail} />
-
                     </Iddiv>
                     <Error>{emailError}</Error>
 
@@ -128,7 +161,7 @@ export default function MembershipPage(){
                     <Error>{passwordError}</Error>
 
                     <Iddiv>
-                        <IdInput type="tel" placeholder='phone' onChange={onChangePhone} />
+                        <IdInput type="tel" placeholder='phone' onChange={onChangePhone} maxLength={12}/>
                     </Iddiv>
                     <Error>{phoneError}</Error>
                     
@@ -143,7 +176,7 @@ export default function MembershipPage(){
                     <Error>{birthdayError}</Error>
 
                     <Iddiv>
-                        <IdInput type="text" placeholder='gender' onChange={onChangeGender} />
+                        <IdInput type="text" placeholder='F or M' onChange={onChangeGender} />
                     </Iddiv>
                     <Error>{genderError}</Error>
 
