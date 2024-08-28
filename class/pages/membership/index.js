@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error, Title, MembershipBtn} from '../../styles/membership.styles';
 import axios from 'axios';
 import { useRouter } from 'next/router'
@@ -51,20 +51,19 @@ export default function MembershipPage(){
             console.log('passwordError:', password);
         }
     }
+    useEffect( () => {
+        const phonePattern = /^\d{11}$/;
+        const phoneIsValid = phonePattern.test(phone);
+           
+        if (phone === "" || phoneIsValid) {
+            setPhoneError("");
+        } else {
+            setPhoneError("ex) 01012345678");
+        }
+    }, [phone]); // phone 상태가 변경될 때마다 실행됩니다.
 
     const onChangePhone = (e) => {
         setPhone(e.target.value)
-
-        const phonePattern = /^\d{11}$/;
-        setIsValid(phonePattern.test(e.target.value))
-
-        if(e.target.value !== "" && isValid){
-            setPhoneError("")
-        }else{
-            // 휴대폰 번호가 유효하지 않을 때의 처리
-            setPhoneError("ex) 01012345678")
-            console.log('phoneError:', phone);
-        }
     }
     const onChangeName = (e) =>{
         setName(e.target.value)
@@ -90,9 +89,11 @@ export default function MembershipPage(){
 
     const onChangeGender = (e) => {
         setGender(e.target.value )
-        if(e.target.value !== ""){
+        if(e.target.value == "F" || e.target.value == "M" ){
             setGenderError("")
-        } 
+        }else {
+            setGenderError("F 또는 M만 입력");
+        }
 
     }
 
@@ -108,13 +109,13 @@ export default function MembershipPage(){
             setPhoneError("번호를 입력해주세요")
         }
         if(!birthday){
-            setBirthdayError("찍어라 입력해주세요")
+            setBirthdayError("생년월일을 선택해주세요")
         }
         if(!name){
             setNameError("이름을 입력해주세요")
         }
         if(!gender){
-            setGenderError("성별을 입력해주세요")
+            setGenderError("성별 'F' 또는 'M' 을입력해주세요")
         }
         if(isValid && birthday && gender){
             try{
@@ -153,7 +154,7 @@ export default function MembershipPage(){
                     <Iddiv>
                         <IdInput placeholder='email' onChange={onChangeEmail} />
                     </Iddiv>
-                    <Error>{emailError}</Error>
+                    {!isValid && <Error>{emailError}</Error>}
 
                     <Iddiv>
                         <IdInput type="password" placeholder='password' onChange={onChangePassword} />
@@ -161,7 +162,7 @@ export default function MembershipPage(){
                     <Error>{passwordError}</Error>
 
                     <Iddiv>
-                        <IdInput type="tel" placeholder='phone' onChange={onChangePhone} maxLength={12}/>
+                        <IdInput type="tel" placeholder='phone' value={phone} onChange={onChangePhone} maxLength={11}/>
                     </Iddiv>
                     <Error>{phoneError}</Error>
                     

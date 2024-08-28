@@ -51,20 +51,24 @@ export const IdInput = styled.input`
     color: #fff;
   }
 `;
-export const PasswordDiv = styled.div`
+
+export const PasswordDiv = styled.div` 
   display:flex;
   justify-content: space-between;
   margin-bottom: 20px;
 `;
+
 export const NameDiv = styled.div`
   display:flex;
   justify-content: space-between;
   margin-bottom: 20px;
 `;
+
 export const Error = styled.div`
-  color: red; 
+  color: green; 
   font-size:14px;
 `;
+
 export const MembershipBtn = styled.button`
     background: #333;
     color: #fff;
