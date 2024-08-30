@@ -119,7 +119,7 @@ export default function MembershipPage(){
         }
         if(isValid && birthday && gender){
             try{
-                const response = await axios.post('https://816d-121-140-170-17.ngrok-free.app/user/user-sign-up',{
+                const response = await axios.post('https://944e-121-140-170-17.ngrok-free.app/user/user-sign-up',{
                     email,
                     password,
                     phone,
@@ -143,9 +143,9 @@ export default function MembershipPage(){
 
     const onClickResult = (e) => {
         e.preventDefault();
-
+        if(isValid && birthday && gender) console.log("통과")
+        else console.log("노통과")
     }
-    
     return(
         <Container>
             <Wrapper>
