@@ -14,13 +14,14 @@ export default function BoardNewPage(props) {
     const onChangePassword = (e) => setPassword(e.target.value);
     const onChangeTitle = (e) => setTitle(e.target.value);
     const onChangeContent = (e) => setContent(e.target.value);
-    const onChangeCategory = (e) => {const upperCaseValue = e.target.value.toUpperCase(); setCategory(upperCaseValue);}
+    const onChangeCategory = (e) => {setCategory(e.target.value);}
 
     /* //// 카테고리 //// start */
     const options = [
-    { value: 'notice', label: 'NOTICE' },
-    { value: 'general', label: 'GENERAL' },
-    { value: 'qna', label: 'QNA' },
+    { value: '선택', label: '선택' },
+    { value: 'NOTICE', label: 'NOTICE' },
+    { value: 'GENERAL', label: 'GENERAL' },
+    { value: 'QNA', label: 'QNA' },
     ];
 
     // 셀렉트 박스 컴포넌트
