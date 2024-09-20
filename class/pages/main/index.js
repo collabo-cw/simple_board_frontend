@@ -2,6 +2,11 @@ import axios from 'axios'
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { useRouter } from 'next/router'
+
+import Slider from 'react-slick'; // Slider 컴포넌트를 import
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
@@ -15,15 +20,37 @@ const Container = styled.div`
 const Wrap = styled.div`
   display: block;
 `;
+const SliderBox = styled.div`
+  display: block;
+  height:190px;
+  background: url(./img/mainBanner2.png) no-repeat;
+  background-size: 100% auto;
+`;
 
 export default function LoginPage() {
 
+    const settings = {
+      dots: true, // 페이지네이션 활성화
+      infinite: true, // 무한 반복
+      speed: 500, // 슬라이드 전환 속도
+      slidesToShow: 1, // 한 번에 보이는 슬라이드 수
+      slidesToScroll: 1, // 스크롤 시 이동하는 슬라이드 수
+      arrows: false // 내비게이션 버튼 제거
+    };
 
   return (
 
       <Container>
         <Wrap>
-          언제 다 만드니 이걸 ㅠㅠㅠㅠㅠ
+          <div>
+            <Slider {...settings}>
+              <SliderBox></SliderBox>
+              <SliderBox></SliderBox>
+            </Slider>
+          </div>
+          <div style={{"margin-top" :"30px"}}>
+            <a href=""><span>소이</span> 님이 좋아할만한 팝스</a>
+          </div>
         </Wrap>
       </Container>
 
