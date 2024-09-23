@@ -2,10 +2,11 @@ import axios from 'axios'
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { useRouter } from 'next/router'
-
+import PopsComponent from '../../src/components/pops/pops'
 import Slider from 'react-slick'; // Slider 컴포넌트를 import
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+
 
 const Container = styled.div`
   width: 100%;
@@ -27,9 +28,32 @@ const SliderBox = styled.div`
   background-size: 100% auto;
 `;
 
+const LinkText = styled.a`
+  position:relative;
+  display:block;
+  color: #333;
+  text-decoration: none;
+  font-size:16px;
+  font-weight:bold;
+  span{
+    color:#ff6635;
+  }
+  ::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    background: url(./img/arrowRight.png) no-repeat;
+    background-size: 100% auto;
+  }
+`
 export default function LoginPage() {
 
     const settings = {
+      className: "center",
       dots: true, // 페이지네이션 활성화
       infinite: true, // 무한 반복
       speed: 500, // 슬라이드 전환 속도
@@ -37,22 +61,35 @@ export default function LoginPage() {
       slidesToScroll: 1, // 스크롤 시 이동하는 슬라이드 수
       arrows: false // 내비게이션 버튼 제거
     };
+      const slidesData = [
 
+        [
+          {img :"/img/chooCafe.png", title: "CHOO CAFE", tag:"#청담 #포토존 #패션", date:"2024-09-23"},
+          {img :"/img/maison.png", title: "메종 마르지엘라", tag:"#여의도 #패션 #카페", date:"2024-09-23"},
+          {img :"/img/dior.png", title: "디올 성수", tag:"#성수 #포토존 #패션", date:"2024-09-23"}
+        ], // 첫 번째 슬라이드
+        [
+          {img :"/img/mainBanner2.png", title: "설화, 다시피어나다", tag:"#북촌 #뷰티 #전시형", date:null},
+          {img :"/img/sale.png", title: "TVN 즐건제일", tag:"#성수 #체험형 #포토존", date:null},
+          {img :"/img/coffee.png", title: "마일스톤 커피", tag:"#북촌 #데이트 #콜라보", date:null}
+        ]  // 두 번째 슬라이드
+    ];
   return (
-
-      <Container>
-        <Wrap>
+    <Container>
+      <Wrap>
           <div>
             <Slider {...settings}>
               <SliderBox></SliderBox>
               <SliderBox></SliderBox>
             </Slider>
           </div>
-          <div style={{"margin-top" :"30px"}}>
-            <a href=""><span>소이</span> 님이 좋아할만한 팝스</a>
+          <div style={{ marginTop: "30px" }}>
+            <LinkText href=""><span>소이</span> 님이 좋아할만한 팝스</LinkText>
+            <PopsComponent slides={[slidesData[0]]} /> {/* 1, 2, 3 슬라이드 */}
+            <LinkText href="" style={{ marginTop: "10px" }}>지금 뜨는 <span>인기</span> 팝스!</LinkText>
+            <PopsComponent slides={[slidesData[1]]} /> {/* 4, 5, 6 슬라이드 */}
           </div>
-        </Wrap>
-      </Container>
-
+      </Wrap>
+    </Container>
   );
 }
