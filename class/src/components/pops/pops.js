@@ -8,25 +8,26 @@ const SlideLink = styled.a`
     color:#000;
 
         img{
-            width:90px;
-            height:70px;
+            width:105px;
+            height:80px;
             background:#000
         }
         h5{
-            font-size:11px;
+            font-size:12px;
             margin: 5px 0 -7px;
+            color:#ff4a87;
             @media (max-width: 375px) {
                 font-size: 10px; 
             }
         }
         span{
-            font-size:9px;
+            font-size:10px;
             @media (max-width: 375px) {
                 white-space: nowrap;
             }
         }
         p{
-            font-size:10px;
+            font-size:11px;
             margin:0;
         }
 `;
@@ -36,7 +37,7 @@ export default function PopsComponent({slides}){
     const popsSettings = {
         className: "center",
         centerMode: false,
-        infinite: true,
+/*         infinite: true, */
         slidesToShow: 3,
         speed: 500,
         arrows: false // 내비게이션 버튼 제거
@@ -51,7 +52,7 @@ export default function PopsComponent({slides}){
                             <div key={index}>
                                 <SlideLink href='#none'>
                                     <img src={slide.img} />
-                                    <h5>{slide.title}</h5>
+                                    <h5>{slide.title}</h5> 
                                     <span>{slide.tag}</span>
                                     <p>{slide.date}</p>
                                 </SlideLink>

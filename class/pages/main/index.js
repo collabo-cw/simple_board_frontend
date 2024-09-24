@@ -1,20 +1,22 @@
 import axios from 'axios'
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { useRouter } from 'next/router'
-import PopsComponent from '../../src/components/pops/pops'
+import { useRouter } from 'next/router';
+import PopsComponent from '../../src/components/pops/pops';
+import FooterComponent from '../../src/components/footer/footer';
 import Slider from 'react-slick'; // Slider 컴포넌트를 import
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 
 const Container = styled.div`
+  position:relative;
   width: 100%;
   box-sizing: border-box;
   background: url("../img/frame.png") no-repeat;
   background-size:100% auto;
-  max-width: 500px;
-  min-height:770px;
+  max-width: 440px;
+  min-height:860px;
   margin:0 auto;
   padding:120px 40px 0;
 `;
@@ -23,9 +25,9 @@ const Wrap = styled.div`
 `;
 const SliderBox = styled.div`
   display: block;
-  height:190px;
+  height:230px;
   background: url(./img/mainBanner2.png) no-repeat;
-  background-size: 100% auto;
+  background-size: 100% 100%;
 `;
 
 const LinkText = styled.a`
@@ -49,7 +51,8 @@ const LinkText = styled.a`
     background: url(./img/arrowRight.png) no-repeat;
     background-size: 100% auto;
   }
-`
+`;
+
 export default function LoginPage() {
 
     const settings = {
@@ -62,7 +65,6 @@ export default function LoginPage() {
       arrows: false // 내비게이션 버튼 제거
     };
       const slidesData = [
-
         [
           {img :"/img/chooCafe.png", title: "CHOO CAFE", tag:"#청담 #포토존 #패션", date:"2024-09-23"},
           {img :"/img/maison.png", title: "메종 마르지엘라", tag:"#여의도 #패션 #카페", date:"2024-09-23"},
@@ -84,12 +86,17 @@ export default function LoginPage() {
             </Slider>
           </div>
           <div style={{ marginTop: "30px" }}>
-            <LinkText href=""><span>소이</span> 님이 좋아할만한 팝스</LinkText>
-            <PopsComponent slides={[slidesData[0]]} /> {/* 1, 2, 3 슬라이드 */}
-            <LinkText href="" style={{ marginTop: "10px" }}>지금 뜨는 <span>인기</span> 팝스!</LinkText>
+            <div>
+              <LinkText href=""><span>소이</span> 님이 좋아할만한 팝스</LinkText>
+              <PopsComponent slides={[slidesData[0]]} /> {/* 1, 2, 3 슬라이드 */}
+            </div>
+            <div>
+            <LinkText href="" style={{ marginTop: "20px" }}>지금 뜨는 <span>인기</span> 팝스!</LinkText>
             <PopsComponent slides={[slidesData[1]]} /> {/* 4, 5, 6 슬라이드 */}
+            </div>
           </div>
       </Wrap>
+      <FooterComponent />
     </Container>
   );
 }
