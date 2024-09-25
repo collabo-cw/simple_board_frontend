@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error, Title, MembershipBtn} from '../../styles/membership.styles';
+import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error, Title, MembershipBtn, SmallTitle} from '../../styles/membership.styles';
 import axios from 'axios';
 import { useRouter } from 'next/router'
 
@@ -151,39 +151,46 @@ export default function MembershipPage(){
             <Wrapper>
                 <WrapLogin>
                     <Title>회원가입</Title>
+
                     <Iddiv>
+                        <SmallTitle>이메일</SmallTitle>
                         <IdInput placeholder='email' onChange={onChangeEmail} />
+                        {!isValid && <Error>{emailError}</Error>}
                     </Iddiv>
-                    {!isValid && <Error>{emailError}</Error>}
 
                     <Iddiv>
+                        <SmallTitle>비밀번호</SmallTitle>
                         <IdInput type="password" placeholder='password' onChange={onChangePassword} />
+                        <Error>{passwordError}</Error>
                     </Iddiv>
-                    <Error>{passwordError}</Error>
 
                     <Iddiv>
+                        <SmallTitle>휴대폰 번호</SmallTitle>
                         <IdInput type="tel" placeholder='phone' value={phone} onChange={onChangePhone} maxLength={11}/>
+                        <Error>{phoneError}</Error>
                     </Iddiv>
-                    <Error>{phoneError}</Error>
                     
                     <Iddiv>
+                        <SmallTitle>이름</SmallTitle>
                         <IdInput type="text" placeholder='name' onChange={onChangeName} />
+                        <Error>{nameError}</Error>
                     </Iddiv>
-                    <Error>{nameError}</Error>
 
                     <Iddiv>
+                        <SmallTitle>생년월일</SmallTitle>
                         <IdInput type="date" placeholder='birthday' onChange={onChangeBirthday} />
+                        <Error>{birthdayError}</Error>
                     </Iddiv>
-                    <Error>{birthdayError}</Error>
 
                     <Iddiv>
+                        <SmallTitle>성별</SmallTitle>
                         <IdInput type="text" placeholder='F or M' onChange={onChangeGender} />
+                        <Error>{genderError}</Error>
                     </Iddiv>
-                    <Error>{genderError}</Error>
 
                 </WrapLogin>
                 <MembershipBtn onClick={onClickSubmit}>회원가입</MembershipBtn>
-                <MembershipBtn onClick={onClickResult}>결과보기</MembershipBtn>
+                {/* <MembershipBtn onClick={onClickResult}>결과보기</MembershipBtn> */}
             </Wrapper>
         </Container>
     )

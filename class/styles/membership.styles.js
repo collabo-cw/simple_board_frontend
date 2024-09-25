@@ -1,55 +1,57 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  max-width: 768px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  color:#fff
+  position:relative;
+  width: 100%;
+  box-sizing: border-box;
+  background: url("../img/frame.png") no-repeat;
+  background-size:100% auto;
+  max-width: 440px;
+  min-height:860px;
+  margin:0 auto;
+  padding:120px 40px 0;
 `;
 export const Wrapper = styled.div`
-  width: 100%;
-  padding: 0 15px 0 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
+  display: block;
 `;
 
 export const Title = styled.h1`
-    font-size: 24px;
-    text-align: center;
+    font-size: 18px;
+    margin:20px 0 40px;
 `;
 
 export const WrapLogin = styled.div`
-  width: 100%;
-  box-sizing: border-box;
-  margin: 100px 15px 0 15px;
-  padding: 15px 15px 30px;
-  border-radius: 4px;
-  border: 1px solid #333;
-  background: #333;
-  ox-shadow: 0px 0px 10px #333;
+    box-sizing: border-box;
+
+    border-radius: 4px;
 `;
 
 export const Iddiv = styled.div`
-  margin-top: 20px;
-  border: 1px solid #FFF;
+  margin-top:5px;
+  margin-bottom: 20px;
+
   border-radius: 4px;
-  &:first-of-type {
-    margin-top: 0;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
+export const IdInput = styled.input`
+  width:100%;
+  background: transparent;
+  box-sizing: border-box;
+  border: 0;
+  color: #000;
+  border: 1px solid #ddd;
+  padding:10px;
+  &::placeholder {
+    color: #999;
   }
 `;
 
-export const IdInput = styled.input`
-  background: transparent;
-  border: 0;
-  color: #fff;
-  outline: red;
-  padding:10px;
-  &::placeholder {
-    color: #fff;
-  }
+export const SmallTitle = styled.div`
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:5px;
 `;
 
 export const PasswordDiv = styled.div` 
@@ -65,15 +67,17 @@ export const NameDiv = styled.div`
 `;
 
 export const Error = styled.div`
-  color: green; 
+  color: #ff1b6d; 
   font-size:14px;
 `;
 
 export const MembershipBtn = styled.button`
-    background: #333;
+    width:100%;
+    background: #ff1b6d;
     color: #fff;
+    border:0;
     border-radius: 4px;
-    padding: 5px 10px;
+    padding: 15px;
     margin-top: 20px;
     font-weight: 600;
 `;
