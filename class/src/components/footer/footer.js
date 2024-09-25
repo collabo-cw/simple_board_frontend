@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
-
+import Link from 'next/link'; // Next.js의 Link import
+import { useRouter } from 'next/router'; // useRouter import
 /* icon import */
 import { RiHome2Line } from "react-icons/ri"; /* home */
 import { IoSearchOutline } from "react-icons/io5"; /* search */
@@ -34,33 +35,26 @@ const Footer = styled.footer`
 `;
 
 const menuItems = [
-    { id: 0, label: "홈", Icon: RiHome2Line },
-    { id: 1, label: "검색", Icon: IoSearchOutline },
-    { id: 2, label: "예약", Icon: HiCalendar },
-    { id: 3, label: "커뮤니티", Icon: BiMessageRoundedDetail },
-    { id: 4, label: "마이", Icon: GoPeople }
+    { id: 0, label: "홈", Icon: RiHome2Line, href: "/main" },
+    { id: 1, label: "검색", Icon: IoSearchOutline, href: "/main/search"},
+    { id: 2, label: "예약", Icon: HiCalendar, href: "/main/reservation" },
+    { id: 3, label: "커뮤니티", Icon: BiMessageRoundedDetail , href: "/main/community" },
+    { id: 4, label: "마이", Icon: GoPeople , href:"/main/mypage"}
 ];
 
 export default function FooterComponent() {
-    const [active, setActive] = useState(null);
-
-    const handleClick = (index) => {
-        setActive(index);
-    };
+    const router = useRouter();
 
     return (
         <Footer>
             <div>
-                {menuItems.map(({ id, label, Icon }) => (
-                    <a 
-                        key={id} 
-                        href="#none" 
-                        onClick={() => handleClick(id)}
-                        style={{ color: active === id ? '#ff4a87' : '#000' }}
-                    >
-                        <Icon style={{ width: "25px", height: "25px" }} />
-                        <span>{label}</span>
-                    </a>
+                {menuItems.map(({ id, label, Icon, href }) => (
+                    <Link key={id} href={href || '#'} passHref>
+                        <a style={{ color: router.pathname === href ? '#ff4a87' : '#000' }}>
+                            <Icon style={{ width: "25px", height: "25px" }} />
+                            <span>{label}</span>
+                        </a>
+                    </Link>
                 ))}
             </div>
         </Footer>
