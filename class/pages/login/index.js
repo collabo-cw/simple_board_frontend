@@ -16,42 +16,6 @@ const Container = styled.div`
 const Wrapper = styled.div`
   display: block;
 `;
-/* const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 768px;
-`;
-const Wrapper = styled.div`
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  background-image: url("../img/pizza.jpg");
-  background-color: rgba(0, 0, 0, 0.55);
-  background-blend-mode: multiply;
-  background-size:contain;
-`; */
-
-
-/* const LogoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 90px;
-  padding-bottom: 70px;
-`;  const LogoImg = styled.img`
-  width: 100px;
-  height: 100px;
-`;  const LogoTitle = styled.div`
-  font-size: 30px;
-  font-weight: bold;
-  color: #fff;
-  padding-top: 10px;
-`; */
-
 
 const InputWrapper = styled.div`
   margin-top: 300px;
@@ -142,8 +106,15 @@ const SocialLoginButtonTitle = styled.div`
   font-size: 16px;
   font-weight: bold;
 `;
-
- 
+const MainMove = styled.a`
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+`
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -182,13 +153,12 @@ export default function LoginPage() {
     alert("회원가입 페이지로 이동합니다")
   }
 
+  const onMainMove = () =>{
+    router.push('/main')
+  }
   return (
     <Container>
       <Wrapper>
-        {/* <LogoWrapper>
-          <LogoImg src="/img/Logo.png"></LogoImg>
-          <LogoTitle>잇츠로드</LogoTitle>
-        </LogoWrapper> */}
         <InputWrapper>
           <EmailInputWrapper>
             <EmailInput
@@ -221,6 +191,7 @@ export default function LoginPage() {
           <EtcItem onClick={onClickMembership}>회원가입</EtcItem>
         </EtcButton>
       </Wrapper>
+      <MainMove onClick={onMainMove}></MainMove>
     </Container>
   );
 }

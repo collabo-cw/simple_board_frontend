@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error, Title, MembershipBtn, SmallTitle} from '../../styles/membership.styles';
+import {Container,Wrapper,WrapLogin, Iddiv ,IdInput,PasswordDiv, NameDiv, Error, Title, MembershipBtn, SmallTitle,MainMove} from '../../styles/membership.styles';
 import axios from 'axios';
 import { useRouter } from 'next/router'
 
@@ -146,6 +146,9 @@ export default function MembershipPage(){
         if(isValid && birthday && gender) console.log("통과")
         else console.log("노통과")
     }
+    const onMainMove = () =>{
+        router.push('/main')
+      }
     return(
         <Container>
             <Wrapper>
@@ -192,6 +195,7 @@ export default function MembershipPage(){
                 <MembershipBtn onClick={onClickSubmit}>회원가입</MembershipBtn>
                 {/* <MembershipBtn onClick={onClickResult}>결과보기</MembershipBtn> */}
             </Wrapper>
+            <MainMove onClick={onMainMove}></MainMove>
         </Container>
     )
 }

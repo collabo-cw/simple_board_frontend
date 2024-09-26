@@ -39,7 +39,7 @@ const menuItems = [
     { id: 1, label: "검색", Icon: IoSearchOutline, href: "/main/search"},
     { id: 2, label: "예약", Icon: HiCalendar, href: "/main/reservation" },
     { id: 3, label: "커뮤니티", Icon: BiMessageRoundedDetail , href: "/main/community" },
-    { id: 4, label: "마이", Icon: GoPeople , href:"/main/mypage"}
+    { id: 4, label: "마이", Icon: GoPeople , href:"/login"}
 ];
 
 export default function FooterComponent() {
@@ -58,5 +58,21 @@ export default function FooterComponent() {
                 ))}
             </div>
         </Footer>
+
+        /* <Footer>  동적 라우팅 사용시 해보기 
+        <div>
+        {menuItems.map(({ id, label, Icon, href }) => {
+            const isActive = router.pathname.includes(href.replace('[id]', '')); // 동적 부분을 제거한 후 비교
+            return (
+                <Link key={id} href={href || '#'} passHref>
+                    <a style={{ color: isActive ? '#ff4a87' : '#000' }}>
+                        <Icon style={{ width: "25px", height: "25px" }} />
+                        <span>{label}</span>
+                    </a>
+                </Link>
+            );
+        })}
+        </div>
+        </Footer> */
     );
 }

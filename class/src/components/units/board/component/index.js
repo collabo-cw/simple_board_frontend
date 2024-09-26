@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { Container, Wrapper, WrapLogin, Title, H4, Textarea, Select, SelectContainer } from '../../../../../styles/new.styles';
+import { useRouter } from 'next/router'
+import { Container, Wrap, WrapLogin, Title, H4, Textarea, Select, SelectContainer,MoveBtn,IdInput } from '../../../../../styles/new.styles';
 
 export default function BoardNewPage(props) {
     const [guest_id, setGuest_id] = useState(""); //작성자
@@ -15,7 +16,7 @@ export default function BoardNewPage(props) {
     const onChangeTitle = (e) => setTitle(e.target.value);
     const onChangeContent = (e) => setContent(e.target.value);
     const onChangeCategory = (e) => {setCategory(e.target.value);}
-
+    const router = useRouter();
     /* //// 카테고리 //// start */
     const options = [
     { value: '선택', label: '선택' },
@@ -41,15 +42,14 @@ export default function BoardNewPage(props) {
     const onClickGuestSubmit = async (e) => {
         try {
             const result = await axios.post('https://944e-121-140-170-17.ngrok-free.app/board/create/board', {
-                /* user_id, */
                 category,
                 guest_id,
                 password,
                 title,
                 content,
-                /* file */
             });
             console.log("성공"); // data 속성을 확인합니다
+            router.push( `/main/community/1`) 
         } catch (error) {
             console.error(error);
             console.log("실패")
@@ -64,9 +64,10 @@ export default function BoardNewPage(props) {
     /* 비회원 게시글 작성 테스트 end */
     return (
         <Container>
-            <Wrapper>
+            <Wrap>
                 <WrapLogin>
                     <Title>게시글 {props.isEdit ? "수정" : "작성"}</Title>
+                    <H4>카테고리</H4>
                     {
                     !props.isEdit&& ( // 수정페이지로 재 진입시 hide 
                     <SelectContainer>
@@ -76,20 +77,20 @@ export default function BoardNewPage(props) {
                             onChange={onChangeCategory} 
                         />
                     </SelectContainer>
-                    )};        
+                    )}        
                     <div>
                         <H4>제목</H4>
-                        <input type="text" onChange={onChangeTitle} />
+                        <IdInput type="text" onChange={onChangeTitle} />
                         <H4>작성자</H4>
-                        <input type="text" onChange={onChangeGuest} />
+                        <IdInput type="text" onChange={onChangeGuest} />
                         <H4>비밀번호</H4>
-                        <input type="password" onChange={onChangePassword} />
+                        <IdInput type="password" onChange={onChangePassword} />
                         <H4>내용</H4>
                         <Textarea type="text" onChange={onChangeContent} />
                     </div>
-                    <button onClick={onClickGuestSubmit}>{props.isEdit ? "수정" : "작성"}하기</button>
+                    <MoveBtn onClick={onClickGuestSubmit}>{props.isEdit ? "수정" : "작성"}하기</MoveBtn>
                 </WrapLogin>
-            </Wrapper>
+            </Wrap>
         </Container>
     );
 }

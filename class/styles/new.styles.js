@@ -1,57 +1,83 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  max-width: 768px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-`;
-export const Wrapper = styled.div`
+  position:relative;
   width: 100%;
-  padding: 0 15px 0 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
+  background: url("/img/frame.png") no-repeat;
+  background-size:100% auto;
+  max-width: 440px;
+  min-height:860px;
+  margin:0 auto;
+  padding:120px 40px 0;
+`;
+export const Wrap = styled.div`
+  display: block;
+  scrollbar-width: none;
+  display: block;
+  overflow: scroll;
 `;
 
 export const Title = styled.h1`
-    font-size: 24px;
-    text-align: center;
-    color:#fff;
+  font-size: 18px;
+  margin:20px 0 40px;
 `;
 
 export const WrapLogin = styled.div`
-  width: 100%;
   box-sizing: border-box;
-  margin: 100px 15px 0 15px;
-  padding: 15px 15px 30px;
   border-radius: 4px;
-  border: 1px solid #333;
-  background: #333;
-  ox-shadow: 0px 0px 10px #333;
+
 `;
 
 export const H4 = styled.h4`
-    font-size: 16px;
-    color:#fff;
-    font-weight:500;
-    margin:1em 0;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
 `;
 
 export const Textarea = styled.textarea`
-    width:100%;
-    min-height: 100px;
-    resize: none;
-    box-sizing: border-box;
-    padding:10px;
+  width:100%;
+  min-height: 100px;
+  resize: none;
+  box-sizing: border-box;
+  padding:10px;
+  border: 1px solid #ddd;
 `
-export const Select = styled.select`
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-`;
 
 export const SelectContainer = styled.div`
   display: flex;
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 10px 10px 10px 0;
+`;
+
+export const IdInput = styled.input`
+  width:100%;
+  background: transparent;
+  box-sizing: border-box;
+  border: 0;
+  color: #000;
+  border: 1px solid #ddd;
+  padding:10px;
+  &::placeholder {
+    color: #999;
+  }
+`;
+
+export const MoveBtn = styled.button`
+    position: absolute;
+    bottom: 70px;
+    width: calc(100% - 80px);
+    background: #ff1b6d;
+    color: #fff;
+    border:0;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 80px;
+    font-weight: 600;
 `;

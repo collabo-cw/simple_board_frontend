@@ -28,7 +28,7 @@ const SlideLink = styled.a`
         }
         p{
             font-size:11px;
-            margin:0;
+            margin-top:-2px;
         }
 `;
 

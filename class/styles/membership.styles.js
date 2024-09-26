@@ -28,7 +28,7 @@ export const WrapLogin = styled.div`
 
 export const Iddiv = styled.div`
   margin-top:5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   border-radius: 4px;
   &:last-of-type {
@@ -72,7 +72,9 @@ export const Error = styled.div`
 `;
 
 export const MembershipBtn = styled.button`
-    width:100%;
+    position: absolute;
+    bottom: 70px;
+    width: calc(100% - 80px);
     background: #ff1b6d;
     color: #fff;
     border:0;
@@ -81,3 +83,12 @@ export const MembershipBtn = styled.button`
     margin-top: 20px;
     font-weight: 600;
 `;
+export const MainMove = styled.a`
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+`

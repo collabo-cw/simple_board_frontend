@@ -17,9 +17,7 @@ export default function ListPasges() {
             const { guest_author, title } = response.data.result;
             setAuthor(guest_author);
             setTitle(title);
-
             console.log("성공"); // 데이터가 성공적으로 받아졌음을 확인합니다
-            
         } catch (error) {
             console.error(error);
             console.log("실패");

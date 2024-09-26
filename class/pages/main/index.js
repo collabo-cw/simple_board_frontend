@@ -22,6 +22,10 @@ const Container = styled.div`
 `;
 const Wrap = styled.div`
   display: block;
+  scrollbar-width: none;
+  max-height: 600px;
+  display: block;
+  overflow: scroll;
 `;
 const SliderBox = styled.div`
   display: block;
