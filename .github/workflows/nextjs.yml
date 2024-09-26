@@ -31,6 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Move to correct directory
+        run: cd class
+      
       - name: Detect package manager
         id: detect-package-manager
         run: |
