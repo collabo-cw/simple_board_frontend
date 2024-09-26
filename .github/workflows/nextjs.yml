@@ -29,12 +29,13 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: class # 'class' 디렉토리로 설정
+        working-directory: simple_board_frontend/class
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Move to class directory
-        run: cd class  
+        
+      - name: List directory contents
+        run: ls -la
       - name: Detect package manager
         id: detect-package-manager
         run: |
