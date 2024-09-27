@@ -46,6 +46,7 @@ export const Textarea = styled.textarea`
 
 export const SelectContainer = styled.div`
   display: flex;
+      flex-direction: column;
 `;
 
 export const Select = styled.select`
@@ -81,3 +82,13 @@ export const MoveBtn = styled.button`
     margin-top: 80px;
     font-weight: 600;
 `;
+
+export const MainMove = styled.a`
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+`

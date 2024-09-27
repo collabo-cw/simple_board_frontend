@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from 'next/router'
-import { Container, Wrap, WrapLogin, Title, H4, Textarea, Select, SelectContainer,MoveBtn,IdInput } from '../../../../../styles/new.styles';
+import { Container, Wrap, WrapLogin, Title, H4, Textarea, Select, SelectContainer,MoveBtn,IdInput,MainMove} from '../../../../../styles/new.styles';
 
 export default function BoardNewPage(props) {
     const [guest_id, setGuest_id] = useState(""); //작성자
@@ -41,15 +41,19 @@ export default function BoardNewPage(props) {
     /* 비회원 게시글 작성 테스트 start */
     const onClickGuestSubmit = async (e) => {
         try {
-            const result = await axios.post('https://944e-121-140-170-17.ngrok-free.app/board/create/board', {
+            const result = await axios.post('https://4f60-121-140-170-17.ngrok-free.app/board/create/board', {
                 category,
+                title,
                 guest_id,
                 password,
-                title,
-                content,
+                content
             });
             console.log("성공"); // data 속성을 확인합니다
-            router.push( `/main/community/1`) 
+            console.log(result)
+            console.log(result.data, 'data')
+            console.log(result.data.user_id, 'data.user_id')
+            console.log(result.data.id, 'data.id')
+            /* router.push( `/main/community/${result.data.guest_id}`)  */
         } catch (error) {
             console.error(error);
             console.log("실패")
@@ -62,15 +66,21 @@ export default function BoardNewPage(props) {
         }
     };
     /* 비회원 게시글 작성 테스트 end */
+    
+    const onMainMove = () =>{
+        router.push('/main')
+    }
+
     return (
         <Container>
             <Wrap>
                 <WrapLogin>
                     <Title>게시글 {props.isEdit ? "수정" : "작성"}</Title>
-                    <H4>카테고리</H4>
+                    
                     {
                     !props.isEdit&& ( // 수정페이지로 재 진입시 hide 
                     <SelectContainer>
+                        <H4>카테고리</H4>
                         <CustomSelect 
                             options={options} 
                             value={category} 
@@ -91,6 +101,7 @@ export default function BoardNewPage(props) {
                     <MoveBtn onClick={onClickGuestSubmit}>{props.isEdit ? "수정" : "작성"}하기</MoveBtn>
                 </WrapLogin>
             </Wrap>
+            <MainMove onClick={onMainMove}></MainMove>
         </Container>
     );
 }

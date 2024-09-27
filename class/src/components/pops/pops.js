@@ -37,9 +37,12 @@ export default function PopsComponent({slides}){
     const popsSettings = {
         className: "center",
         centerMode: false,
-/*         infinite: true, */
+        infinite: true,
         slidesToShow: 3,
         speed: 500,
+        autoplay: true, // 자동 재생 활성화
+        autoplaySpeed: 2000, // 2초마다 이동
+        pauseOnHover: true, // 마우스 오버 시 자동 재생 일시 정지
         arrows: false // 내비게이션 버튼 제거
       };
       

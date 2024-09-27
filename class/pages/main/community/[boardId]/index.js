@@ -1,82 +1,131 @@
-
+import React, { useEffect, useState } from 'react';
 import styled from "@emotion/styled";
-import { useRouter } from 'next/router';    
+import { useRouter } from 'next/router';
+import axios from 'axios';
+
 const Container = styled.div`
-  position:relative;
+  position: relative;
   width: 100%;
   box-sizing: border-box;
   background: url("/img/frame.png") no-repeat;
-  background-size:100% auto;
+  background-size: 100% auto;
   max-width: 440px;
-  min-height:860px;
-  margin:0 auto;
-  padding:120px 40px 0;
+  min-height: 860px;
+  margin: 0 auto;
+  padding: 120px 40px 0;
 `;
 
 const Wrap = styled.div`
   display: block;
   scrollbar-width: none;
-  display: block;
   overflow: scroll;
 `;
 
 const DetaillTag = styled.div`
-    margin-top:10px;
-    padding:10px;
-    div{
-        color:#000;
-        margin:10px 0;    
-        border: 1px solid #ddd;
-        padding:10px;
-        span{
-            font-weight:bold;
-        }
-        > span:last-child{
-            color:red;
-        }
+  margin-top: 10px;
+  padding: 10px;
+  div {
+    color: #000;
+    margin: 10px 0;    
+    border: 1px solid #ddd;
+    padding: 10px;
+    span {
+      font-weight: bold;
     }
+    > span:last-child {
+      color: red;
+    }
+  }
 `;
 
 const MoveBtn = styled.button`
-    position: absolute;
-    bottom: 70px;
-    width: calc(100% - 80px);
-    background: #ff1b6d;
-    color: #fff;
-    border:0;
-    border-radius: 4px;
-    padding: 15px;
-    margin-top: 80px;
-    font-weight: 600;
-    cursor: pointer;
+  position: absolute;
+  bottom: 70px;
+  width: calc(100% - 80px);
+  background: #ff1b6d;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 80px;
+  font-weight: 600;
+  cursor: pointer;
 `;
 
-export default function DetaillPage(){
+const MainMove = styled.a`
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+`;
+
+export default function DetaillPage() {
     const router = useRouter();
-    
-    const updateMove = ()=>{
-       /*  router.push( `/main/community/[boardId]/new`)  */
-       alert("해결못하는중......")
-      }
-    return(
+    const { boardId } = router.query; // URL에서 boardId 가져오기
+
+    const [boardDetail, setBoardDetail] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const fetchBoardDetail = async () => {
+        if (!boardId) return; // boardId가 없으면 요청하지 않음
+
+        try {
+            const response = await axios.post('https://4f60-121-140-170-17.ngrok-free.app/board/get/board-detail', {
+                id: parseInt(boardId) // boardId를 정수로 변환
+            });
+            setBoardDetail(response.data.result); // 결과를 상태에 저장
+            setLoading(false);
+        } catch (err) {
+            setError(err);
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchBoardDetail(); // 컴포넌트가 마운트될 때 API 호출
+    }, [boardId]); // boardId가 변경될 때마다 호출
+
+    const updateMove = () => {
+        alert("수정 페이지로 이동합니다...");
+        router.push(`/main/community/${boardId}/edit`); // [boardId]에 맞춰 URL 수정
+    };
+
+    const onMainMove = () => {
+        router.push('/main');
+    };
+
+    if (loading) {
+        return <div>Loading...</div>; // 로딩 중 표시
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>; // 오류 표시
+    }
+
+    return (
         <Container>
             <Wrap>
                 <DetaillTag>
                     <div>
-                        <span>카테고리</span> : <span>카테고리 받을 곳</span>
+                        <span>카테고리</span> : <span>{boardDetail.category}</span>
                     </div>
                     <div>
-                        <span>작성자</span> : <span>작성자 받을 곳</span>
+                        <span>작성자</span> : <span>{boardDetail.guest_author}</span>
                     </div>
                     <div>
-                        <span>제목</span> : <span>제목 받을 곳</span>
+                        <span>제목</span> : <span>{boardDetail.title}</span>
                     </div>
                     <div>
-                        <span>내용</span> : <span>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용 받을 곳</span>
+                        <span>내용</span> : <span>{boardDetail.content}</span> {/* 내용이 있는 경우 */}
                     </div>
                 </DetaillTag>
                 <MoveBtn onClick={updateMove}>수정하러 가기</MoveBtn>
             </Wrap>
+            <MainMove onClick={onMainMove}></MainMove>
         </Container>
-    )
+    );
 }
