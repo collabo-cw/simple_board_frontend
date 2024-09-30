@@ -13,7 +13,7 @@ export default function RestGetPage(){
             
     const onClickSync = async () => {
         try {
-            const result = await axios.post('https://4f60-121-140-170-17.ngrok-free.app/board/get/board-detail', {
+            const result = await axios.post('https://144b-121-140-170-17.ngrok-free.app/board/get/board-detail', {
                 "id": 2
             });
     
