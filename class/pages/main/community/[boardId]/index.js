@@ -74,7 +74,7 @@ export default function DetaillPage() {
         if (!boardId) return; // boardId가 없으면 요청하지 않음
 
         try {
-            const response = await axios.post('https://144b-121-140-170-17.ngrok-free.app/board/get/board-detail', {
+            const response = await axios.post('https://144b-121-140-170-17.ngrok-free.app//board/get/board-detail', {
                 id: parseInt(boardId) // boardId를 정수로 변환
             });
             setBoardDetail(response.data.result); // 결과를 상태에 저장
