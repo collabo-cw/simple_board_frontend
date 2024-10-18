@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import FooterComponent from '../../../src/components/footer/footer';
 import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import axios from 'axios';
 const Container = styled.div`
   position:relative;
   width: 100%;
@@ -30,6 +32,8 @@ const MoveBtn = styled.button`
   padding: 15px;
   font-weight: 600;
   cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 const CommunityTag = styled.div`
   display: flex;
@@ -70,8 +74,23 @@ const ListWrap = styled.div`
   & > div:last-of-type {
   }
 `
+
 export default function CommunityPages(){
     const router = useRouter();
+    const [result, setResult] = useState("")
+    const list = async() => {
+      try{
+        const result = await axios.post('https://243c-175-197-73-179.ngrok-free.app/board/get/board-list', {
+          "category_type": "GENERAl",
+          "categorize_type": "CREATED"
+      });
+      
+      }
+      catch(error){
+        return console.log("실패다 이놈아");
+      }
+      console.log(result.data)
+    }
 
     const WriterMove = ()=>{
       router.push( `/main/community/new`) 
@@ -79,7 +98,8 @@ export default function CommunityPages(){
     return(
         <Container>
             <Wrap>
-                <CommunityTag>
+              <button onClick={list}> sdsd</button>
+                {/* <CommunityTag>
                   <div>분류</div>
                   <div>작성자</div>
                   <div>제목</div>
@@ -98,7 +118,7 @@ export default function CommunityPages(){
                   <div>QNA</div>
                   <div>작성자</div>
                   <div>제목</div>
-                </ListWrap>
+                </ListWrap> */}
                 <MoveBtn onClick={WriterMove}>글쓰기</MoveBtn>
             </Wrap>
             <FooterComponent />

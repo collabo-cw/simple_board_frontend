@@ -81,6 +81,7 @@ export const MoveBtn = styled.button`
     padding: 15px;
     margin-top: 80px;
     font-weight: 600;
+    cursor: pointer;
 `;
 
 export const MainMove = styled.a`

@@ -74,8 +74,8 @@ export default function DetaillPage() {
         if (!boardId) return; // boardId가 없으면 요청하지 않음
 
         try {
-            const response = await axios.post('https://144b-121-140-170-17.ngrok-free.app//board/get/board-detail', {
-                id: parseInt(boardId) // boardId를 정수로 변환
+            const response = await axios.post('https://243c-175-197-73-179.ngrok-free.app//board/get/board-detail', {
+                id: parseInt(boardId) // 해당 boardId
             });
             setBoardDetail(response.data.result); // 결과를 상태에 저장
             setLoading(false);
@@ -103,7 +103,7 @@ export default function DetaillPage() {
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>; // 오류 표시
+        return <div>Error: 정보가 없거나 에러임 {error.message}</div>; // 오류 표시
     }
 
     return (

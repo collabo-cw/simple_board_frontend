@@ -41,7 +41,7 @@ export default function BoardNewPage(props) {
     /* 비회원 게시글 작성 테스트 start */
     const onClickGuestSubmit = async (e) => {
         try {
-            const result = await axios.post('https://144b-121-140-170-17.ngrok-free.app/board/create/board', {
+            const result = await axios.post('https://243c-175-197-73-179.ngrok-free.app/board/create/board', {
                 category,
                 title,
                 guest_id,
