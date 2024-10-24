@@ -57,7 +57,7 @@ const LinkText = styled.a`
   }
 `;
 
-export default function LoginPage() {
+export default function MainPage() {
 
     const settings = {
       className: "center",

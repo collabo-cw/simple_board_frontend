@@ -127,7 +127,7 @@ export default function MembershipPage(){
                     birthday,
                     gender
                 });   
-                router.push('/main')
+                router.push('/login')
                 console.log('회원가입 성공:');
             }catch(error){
                 alert(error.massage)

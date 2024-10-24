@@ -133,21 +133,48 @@ export default function LoginPage() {
 
   const onChangePassword = (event) => {
     setPassword(event.target.value);
-    if (password.length >= 8 && password.length <= 16) {
+    if (password.length >= 5 && password.length <= 16) {
       setPasswordError("");
     } else {
       setPasswordError("8~16자의 영문,숫자,특수 문자만 사용 가능합니다.");
     }
   };
-  const onClickLogin = async () => {
-    if (emailError === "" && passwordError === "") {
-      alert("환영합니다");
-    } 
-    const result = await axios.get("https://koreanjson.com/posts/1")     //함수 중복선언 문제
-        console.log(result) // 제대로된 결과 => { title: "..."}
-        console.log(result.data.title) // 제대로된 결과 => { title: "..."}
-  };
 
+  // 로그인 인증 start
+  const onAuthentication = async () => {
+    try{
+      const result = await axios.post("https://243c-175-197-73-179.ngrok-free.app/user/login",{
+        email,
+        password 
+      }) 
+      console.log(result) // 제대로된 결과 => { title: "..."}
+
+      localStorage.setItem('access_token', JSON.stringify(result.data.result.access_token));
+      localStorage.setItem('user_uuid', JSON.stringify(result.data.result.user_uuid));
+      localStorage.setItem('refresh_token', JSON.stringify(result.data.result.refresh_token));
+      /* console.log('access_token', result.data.result.user_uuid)  데이터 보기 */
+      /* console.log('access_token', result.data.result.access_token)  데이터 보기 */
+      /* console.log('access_token', result.data.result.refresh_token)  데이터 보기 */
+      alert("로그인 성공");
+      router.push('/main')
+    }catch(errer){
+      alert("올바르지 않습니다")
+    }
+  };
+  // 로그인 인가 start 
+  const onAuthorization = async () =>{
+    const refresh_token  = JSON.parse(localStorage.getItem('refresh_token'));
+    try {
+      const response = await axios.post("https://243c-175-197-73-179.ngrok-free.app/user/api/token/refresh", {
+        refresh : refresh_token
+      });
+      console.log(response.data)
+
+    } catch (error) {
+        console.error("Failed to fetch user data:", error);
+    }
+  }
+  // 로그인 인가 end 
   const onClickMembership = () => {
     router.push('./membership')
     alert("회원가입 페이지로 이동합니다")
@@ -176,13 +203,16 @@ export default function LoginPage() {
           </PasswordInputWrapper>
           <PasswordError>{passwordError}</PasswordError>
         </InputWrapper>
-        <LoginButton onClick={onClickLogin}>
+        <LoginButton onClick={onAuthentication}>
           <LoginButtonTitle>이메일로 로그인</LoginButtonTitle>
           <SocialLoginButton>
             <SocialLoginButtonImg src="../img/kakao.png"></SocialLoginButtonImg>
             <SocialLoginButtonTitle>카카오톡으로 로그인</SocialLoginButtonTitle>
           </SocialLoginButton>
         </LoginButton>
+        {/* <LoginButton onClick={onAuthorization}>
+          로그인 인가 확인버튼 
+        </LoginButton> */}
         <EtcButton>
           <EtcItem>이메일 찾기</EtcItem>
           <EtcItem>|</EtcItem>

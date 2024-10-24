@@ -12,7 +12,7 @@ export default function RestGetPage() {
         try {
             setCurrentCategory(category); // 현재 카테고리 설정
             const response = await axios.post('https://243c-175-197-73-179.ngrok-free.app/board/get/board-detail', {
-                "id": 5,
+                "id": 6,
                 "category": category
             });
             console.log(response.data)
@@ -50,6 +50,7 @@ export default function RestGetPage() {
                     <div>{result.result.title}</div>
                     <div>{result.result.id}</div>
                     <div>{result.result.content}</div>
+                    <div>{result.result.created_at}</div>
                     <div>{result.result.number !== undefined ? result.result.number : 'Number not found'}</div>
                 </div>
             )}

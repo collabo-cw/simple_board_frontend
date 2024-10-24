@@ -80,16 +80,18 @@ export default function CommunityPages(){
     const [result, setResult] = useState("")
     const list = async() => {
       try{
-        const result = await axios.post('https://243c-175-197-73-179.ngrok-free.app/board/get/board-list', {
-          "category_type": "GENERAl",
-          "categorize_type": "CREATED"
-      });
-      
+        const response = await axios.post('https://243c-175-197-73-179.ngrok-free.app/board/get/board-list', 
+          {
+          "category_type": "GENERAL",
+          "categorize_type": "CREATED",
+      }
+    );
+      setResult(response.data)
+      console.log(response)
       }
       catch(error){
         return console.log("실패다 이놈아");
       }
-      console.log(result.data)
     }
 
     const WriterMove = ()=>{
