@@ -93,8 +93,7 @@ jobs:
           fi
 
       - name: Upload artifact
-        if: env.out_dir_exists == 'true'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./out
           name: github-pages
