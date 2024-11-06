@@ -75,10 +75,19 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
+      - name: Check if 'out' directory exists
+        run: |
+          if [ ! -d "./out" ]; then
+            echo "The 'out' directory does not exist. Exiting."
+            exit 1
+          fi
       - name: Upload artifact
+        if: success() && steps.check-out.outputs.out_dir_exists == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
+          name: github-pages
+          retention-days: 1
 
 
   # Deployment job
