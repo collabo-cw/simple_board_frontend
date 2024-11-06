@@ -76,6 +76,11 @@ jobs:
           ${{ steps.detect-package-manager.outputs.runner }} next export
           echo "Next.js export completed successfully."
 
+      - name: Verify 'out' directory contents
+        run: |
+          echo "Checking contents of 'out' directory..."
+          ls -la ./out || echo "'out' directory not found or empty."
+
       - name: Check if 'out' directory exists
         id: check-out-dir
         run: |
