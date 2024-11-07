@@ -38,7 +38,7 @@ const menuItems = [
     { id: 0, label: "홈", Icon: RiHome2Line, href: "/simple_board_frontend/main" },
     { id: 1, label: "검색", Icon: IoSearchOutline, href: "/simple_board_frontend/main/search"},
     { id: 2, label: "예약", Icon: HiCalendar, href: "/simple_board_frontend/main/reservation" },
-    { id: 3, label: "커뮤니티", Icon: BiMessageRoundedDetail , href: "/main/community" },
+    { id: 3, label: "커뮤니티", Icon: BiMessageRoundedDetail , href: "/simple_board_frontend/main/community" },
     { id: 4, label: "마이", Icon: GoPeople , href:"/simple_board_frontend/login"}
 ];
 
