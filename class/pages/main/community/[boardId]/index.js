@@ -91,11 +91,11 @@ export default function DetaillPage() {
 
     const updateMove = () => {
         alert("수정 페이지로 이동합니다...");
-        router.push(`/main/community/${boardId}/edit`); // [boardId]에 맞춰 URL 수정
+        router.push(`./main/community/${boardId}/edit`); // [boardId]에 맞춰 URL 수정
     };
 
     const onMainMove = () => {
-        router.push('/main');
+        router.push('./main');
     };
 
     if (loading) {
