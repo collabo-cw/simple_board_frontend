@@ -119,7 +119,7 @@ export default function MembershipPage(){
         }
         if(isValid && birthday && gender){
             try{
-                const response = await axios.post('https://243c-175-197-73-179.ngrok-free.app/user/user-sign-up',{
+                const response = await axios.post('https://2595-175-197-73-179.ngrok-free.app/user/user-sign-up',{
                     email,
                     password,
                     phone,

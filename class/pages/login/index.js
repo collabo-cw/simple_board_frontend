@@ -143,7 +143,7 @@ export default function LoginPage() {
   // 로그인 인증 start
   const onAuthentication = async () => {
     try{
-      const result = await axios.post("https://243c-175-197-73-179.ngrok-free.app/user/login",{
+      const result = await axios.post("https://2595-175-197-73-179.ngrok-free.app/user/login",{
         email,
         password 
       }) 
@@ -165,7 +165,7 @@ export default function LoginPage() {
   const onAuthorization = async () =>{
     const refresh_token  = JSON.parse(localStorage.getItem('refresh_token'));
     try {
-      const response = await axios.post("https://243c-175-197-73-179.ngrok-free.app/user/api/token/refresh", {
+      const response = await axios.post("https://2595-175-197-73-179.ngrok-free.app/user/api/token/refresh", {
         refresh : refresh_token
       });
       console.log(response.data)

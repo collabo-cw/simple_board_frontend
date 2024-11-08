@@ -80,7 +80,7 @@ export default function CommunityPages(){
     const [result, setResult] = useState("")
     const list = async() => {
       try{
-        const response = await axios.post('https://243c-175-197-73-179.ngrok-free.app/board/get/board-list', 
+        const response = await axios.post('https://2595-175-197-73-179.ngrok-free.app/board/get/board-list', 
           {
           "category_type": "GENERAL",
           "categorize_type": "CREATED",

@@ -11,7 +11,7 @@ export default function RestGetPage() {
     const fetchData = async (category) => {
         try {
             setCurrentCategory(category); // 현재 카테고리 설정
-            const response = await axios.post('https://243c-175-197-73-179.ngrok-free.app/board/get/board-detail', {
+            const response = await axios.post('https://2595-175-197-73-179.ngrok-free.app/board/get/board-detail', {
                 "id": 6,
                 "category": category
             });
