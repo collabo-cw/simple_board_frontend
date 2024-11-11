@@ -206,7 +206,7 @@ export default function LoginPage() {
         <LoginButton onClick={onAuthentication}>
           <LoginButtonTitle>이메일로 로그인</LoginButtonTitle>
           <SocialLoginButton>
-            <SocialLoginButtonImg src="../img/kakao.png"></SocialLoginButtonImg>
+            <SocialLoginButtonImg src="./img/kakao.png"></SocialLoginButtonImg>
             <SocialLoginButtonTitle>카카오톡으로 로그인</SocialLoginButtonTitle>
           </SocialLoginButton>
         </LoginButton>
