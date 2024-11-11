@@ -95,7 +95,7 @@ export default function CommunityPages(){
     }
 
     const WriterMove = ()=>{
-      router.push( `/main/community/new`) 
+      router.push( `simple_board_frontend/main/community/new`) 
     }
     return(
         <Container>
