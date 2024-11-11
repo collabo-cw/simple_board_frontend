@@ -66,14 +66,14 @@ export default function MainPage() {
     };
       const slidesData = [
         [
-          {img :"/img/chooCafe.png", title: "CHOO CAFE", tag:"#청담 #포토존 #패션", date:"2024-09-23"},
-          {img :"/img/maison.png", title: "메종 마르지엘라", tag:"#여의도 #패션 #카페", date:"2024-09-23"},
-          {img :"/img/dior.png", title: "디올 성수", tag:"#성수 #포토존 #패션", date:"2024-09-23"}
+          {img :"./img/chooCafe.png", title: "CHOO CAFE", tag:"#청담 #포토존 #패션", date:"2024-09-23"},
+          {img :"./img/maison.png", title: "메종 마르지엘라", tag:"#여의도 #패션 #카페", date:"2024-09-23"},
+          {img :"./img/dior.png", title: "디올 성수", tag:"#성수 #포토존 #패션", date:"2024-09-23"}
         ], // 첫 번째 슬라이드
         [
-          {img :"/img/mainBanner2.png", title: "설화, 다시피어나다", tag:"#북촌 #뷰티 #전시형", date:null},
-          {img :"/img/sale.png", title: "TVN 즐건제일", tag:"#성수 #체험형 #포토존", date:null},
-          {img :"/img/coffee.png", title: "마일스톤 커피", tag:"#북촌 #데이트 #콜라보", date:null}
+          {img :"./img/mainBanner2.png", title: "설화, 다시피어나다", tag:"#북촌 #뷰티 #전시형", date:null},
+          {img :"./img/sale.png", title: "TVN 즐건제일", tag:"#성수 #체험형 #포토존", date:null},
+          {img :"./img/coffee.png", title: "마일스톤 커피", tag:"#북촌 #데이트 #콜라보", date:null}
         ]  // 두 번째 슬라이드
     ];
   return (
