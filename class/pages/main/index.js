@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import PopsComponent from '../../src/components/pops/pops';
-import FooterComponent from '../../src/components/footer/footer';
+import PopsComponent from 'simple_board_frontend/src/components/pops/pops';
+import FooterComponent from 'simple_board_frontend/src/components/footer/footer';
 import Slider from 'react-slick'; // Slider 컴포넌트를 import
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
