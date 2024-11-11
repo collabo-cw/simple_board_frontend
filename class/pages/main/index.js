@@ -1,19 +1,15 @@
-import axios from 'axios'
 import styled from "@emotion/styled";
-import { useState } from "react";
-import { useRouter } from 'next/router';
 import PopsComponent from '../../src/components/pops/pops';
 import FooterComponent from '../../src/components/footer/footer';
 import Slider from 'react-slick'; // Slider 컴포넌트를 import
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Link from 'next/link';
 
 const Container = styled.div`
   position:relative;
   width: 100%;
   box-sizing: border-box;
-  background: url("../img/frame.png") no-repeat;
+  background: url("./img/frame.png") no-repeat;
   background-size:100% auto;
   max-width: 440px;
   min-height:860px;
