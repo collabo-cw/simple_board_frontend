@@ -6,7 +6,7 @@ const Container = styled.div`
   position:relative;
   width: 100%;
   box-sizing: border-box;
-  background: url("/img/frame2.png") no-repeat;
+  background: url("simple_board_frontend/img/frame2.png") no-repeat;
   background-size:100% auto;
   max-width: 440px;
   min-height:860px;
