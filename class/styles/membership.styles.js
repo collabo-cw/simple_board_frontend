@@ -4,7 +4,7 @@ export const Container = styled.div`
   position:relative;
   width: 100%;
   box-sizing: border-box;
-  background: url("../img/frame.png") no-repeat;
+  background: url("./img/frame.png") no-repeat;
   background-size:100% auto;
   max-width: 440px;
   min-height:860px;
